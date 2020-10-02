@@ -21,36 +21,34 @@
             </tr>
         </table>
 
-        <div id="keyboard">
-            <table id="keyboardNumbers">
-                <tr>
-                    <td v-for="(num, key) in 9"
-                        :key="key"
-                        @click="clickedKeyboardCell(num)"
-                        :class="['cell', 'vline']"
-                    >
-                        {{ num }}
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td>
-                        <button class="checkButton" @click="clickedCheckButton()">check</button>
-                    </td>
-                    <td>
-                        <button class="checkButton" @click="clickedGoToSelectPageButton()">choose again</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <table id="keyboard">
+            <tr id="keyboardNumbers">
+                <td v-for="(num, key) in 9"
+                    :key="key"
+                    @click="clickedKeyboardCell(num)"
+                    :class="['cell', 'vline']"
+                >
+                    {{ num }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="checkButton" @click="clickedCheckButton()">check</button>
+                </td>
+                <td>
+                    <button class="checkButton" @click="clickedGoToSelectPageButton()">choose again</button>
+                </td>
+            </tr>
+        </table>
        <p>{{ resultMessage }}</p>
     </div>
 </template>
 
 <script>
+//import Modal from './Modal.vue';
 export default {
     name : 'problemPage',
+    //components : { Modal },
     data () {
         return {
             title : 'sudoku',

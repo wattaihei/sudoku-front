@@ -1,8 +1,17 @@
 <template>
     <div id='selectPage'>
-        <div v-for="(num, key) in 5" :key="key">
-            <button @click="clickedGenerate(num)" class="generateButton">{{ num }}</button>
-        </div>
+        <h1></h1>
+        <h2>難易度を選んでください</h2>
+        <table class="problemTable">
+            <tr v-for="(num, key) in 5" :key="key">
+                <td>
+                    <button @click="clickedGenerate(num)" class="generateButton">{{ num }}</button>
+                </td>
+                <td>
+                    {{ message[num] }}
+                </td>
+            </tr>
+        </table>
         <router-view></router-view>
     </div>
 </template>
@@ -16,6 +25,17 @@ const axios = axiosBase.create({
 });
 export default {
     name : 'selectPage',
+    data () {
+        return {
+            message : {
+                1 : "簡単です",
+                2 : "単純な操作だけで解けます",
+                3 : "少しテクニックが必要かも",
+                4 : "かなり難しい",
+                5 : "人間が解けるのかはわからない"
+            }
+        }
+    },
     methods : {
         async clickedGenerate(num) {
             const params = await this.getProblemAndAnswer(num);
@@ -47,11 +67,16 @@ export default {
 </script>
 
 <style>
+.problemTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .generateButton {
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
-    height: 100px;
+    width: 100px;
+    height: 50px;
 }
 
 </style>

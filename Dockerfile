@@ -19,4 +19,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 80
-CMD [ "http-server", "dist" ]
+CMD [ "npm", "run", "dev" ]
